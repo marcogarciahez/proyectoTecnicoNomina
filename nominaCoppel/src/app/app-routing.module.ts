@@ -8,20 +8,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
-    path: 'empleados',
-    loadChildren: () => import('./empleados/empleados.module').then( m => m.EmpleadosPageModule)
-  },
-  {
     path: 'captura-empleados',
-    loadChildren: () => import('./views/captura-empleados/captura-empleados.module').then( m => m.CapturaEmpleadosPageModule)
+    loadChildren: () => import('./views/captura-empleados/captura-empleados.module').then(m => m.CapturaEmpleadosPageModule)
   },
   {
     path: 'captura-movimientos',
-    loadChildren: () => import('./views/captura-movimientos/captura-movimientos.module').then( m => m.CapturaMovimientosPageModule)
+    loadChildren: () => import('./views/captura-movimientos/captura-movimientos.module').then(m => m.CapturaMovimientosPageModule)
   }
 ];
 

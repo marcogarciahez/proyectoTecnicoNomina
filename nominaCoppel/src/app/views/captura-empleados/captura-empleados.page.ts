@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Puesto } from 'src/app/models/Puesto';
 @Component({
   selector: 'app-captura-empleados',
   templateUrl: './captura-empleados.page.html',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CapturaEmpleadosPage implements OnInit {
 
+  public arrayPuestos: Puesto[] = [];
+
   constructor() { }
 
-  ngOnInit() {
+  
+
+  ngOnInit() { 
+    this.arrayPuestos = [new Puesto("Chofer",3), new Puesto("Cargador",3), new Puesto("Auxiliar",3)] 
   }
+
+
 
 }

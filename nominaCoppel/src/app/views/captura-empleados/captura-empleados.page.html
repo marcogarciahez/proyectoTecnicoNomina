@@ -1,13 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>captura-empleados</ion-title>
+    <ion-title>Captura de empleados</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">captura-empleados</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-row>
+      <ion-col>
+        <ion-label>Número:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Nombre del empleado:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-select label="Rol" placeholder="Seleccione un puesto:">
+      <div *ngFor="let p of arrayPuestos">
+        <ion-select-option value="{{p.nombre}}">{{p.nombre}}</ion-select-option>
+      </div>
+    </ion-select>
+    <ion-row>
+      <ion-col>
+        <ion-button>Guardar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button>Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
