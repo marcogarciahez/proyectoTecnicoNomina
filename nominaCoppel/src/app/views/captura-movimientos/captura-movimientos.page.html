@@ -5,40 +5,77 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-row>
-      <ion-col>
-        <ion-label>Número:</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-label>Nombre del empleado:</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-input></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-select label="Rol" placeholder="Seleccione un puesto">
-      <div *ngFor="let p of arrayPuestos">
-        <ion-select-option value="{{p.nombre}}">{{p.nombre}}</ion-select-option>
-      </div>
-    </ion-select>
-    <ion-select label="Mes" placeholder="Seleccione una fecha">
-      <div *ngFor="let mes of arrayMeses">
-        <ion-select-option value="{{mes}}">{{mes}}</ion-select-option>
-      </div>
-    </ion-select>
-    <ion-row>
-      <ion-col>
-        <ion-button>Guardar</ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button>Cancelar</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+  <form [formGroup] = "formCaptura">
+    <ion-card>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <ion-select label="Empleado:" placeholder="Seleccione un empleado" interface="popover" (ionChange)="selectEmpleado($event)" justify="start" formControlName="empleado">
+            <div>
+              <ion-select-option *ngFor="let emp of arrayEmpleados" [value]=emp>{{emp.nombre + ' ' + emp.apellido_pat + ' ' + emp.apellido_mat}}</ion-select-option>
+            </div>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <ion-label>Número de empleado:</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{empleadoSeleccionado.id}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <ion-label>Rol:</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{empleadoSeleccionado.nombre_puesto}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <ion-label>Seleccione el mes:</ion-label>
+        </ion-col>
+        <ion-col size="3">
+          <ion-datetime-button datetime="date"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="date" presentation="month-year" (ionChange)="fechaSeleccionada($event)" >
+            <span slot="title">Seleccione la fecha</span>
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <ion-label>Movimientos realizados:</ion-label>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item>
+            <ion-input type="number" min="0" formControlName="cant_movimientos" [(ngModel)]="cant_movimientos"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <ion-label>Faltas:</ion-label>
+        </ion-col>
+        <ion-col size="3">
+          <ion-item>
+            <ion-input type="number" min="0" formControlName="faltas" [(ngModel)]="faltas"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" offset="2" style="display: flex; justify-content: center;">
+          <ion-button [disabled]="!formCaptura.valid" (click)="capturarMovimiento()">Guardar</ion-button>
+        </ion-col>
+        <ion-col size="4" style="display: flex; justify-content: center;">
+          <ion-button>Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </form>
+  
 </ion-content>

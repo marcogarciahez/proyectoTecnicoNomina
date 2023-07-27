@@ -1,9 +1,13 @@
 export class Puesto {
-    nombre: string;
-    salario: number;
-  
-    constructor(nombre:string, salario:number) {
+  id?: number;
+  nombre?: string;
+  salario_hora?: number;
+  bono_hora?: number;
+
+  constructor(id:number,nombre:string, salario_hora:number, bono_hora: number) {
+      this.id = id;
       this.nombre = nombre;
-      this.salario = salario;
-    }
+      this.salario_hora = salario_hora;
+      this.bono_hora = bono_hora
   }
+}
