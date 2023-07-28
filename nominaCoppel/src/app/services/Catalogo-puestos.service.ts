@@ -12,6 +12,7 @@ export class CatalogoPuestosService {
 
     public url = environment.url
 
+    //Se utiliza para obtener los puestos disponibles
     public obtenerPuestos() {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Puesto/`, {

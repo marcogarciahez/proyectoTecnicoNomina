@@ -31,6 +31,7 @@ export class ConsultaNominaMensualPage implements OnInit {
   ngOnInit() {
     this.fechaSelec = formatDate(new Date(), 'yyyy-MM', 'en-US')
     console.log(this.fechaSelec)
+    //Obtenemos los empleados para llenar el select
     this.catalogoEmpleadosService.obtenerEmpleados().then((resp: any) =>{
       console.log(resp)
       this.arrayEmpleados = resp
@@ -40,17 +41,18 @@ export class ConsultaNominaMensualPage implements OnInit {
   }
 
   selectEmpleado($event: any){
-    console.log($event)
+    //Empleado a sido seleccionado
     this.empleadoSeleccionado = $event.target.value
   }
 
   nuevaFecha($event: any){
+    //Fecha a sido modificada
     this.fechaSelec = $event.target.value
-    console.log(this.fechaSelec)
+    
   }
 
   consultarNomina(){
-    console.log(this.fechaSelec)
+    //Utilizamos el servicio para llamar a obtener la nomina con los parametros de fecha y empleado para filtrar
     this.mov_NominaMensualService.obtenerNomina(this.empleadoSeleccionado.id!, this.fechaSelec).then((resp: any) =>{
       console.log(resp)
       this.nomina = resp
@@ -59,10 +61,10 @@ export class ConsultaNominaMensualPage implements OnInit {
       console.log(e)
       this.messagingService.error("Error al consultar nomina")
     });
-    console.log("Hola")
   }
 
   async abrirModal() {
+    //Componente que abre un calendario para seleccionar una fecha con formato de Mes y año.
     const modal = await this.modalController.create({
       component: FechacomponentComponent,
       cssClass: 'modal-fecha'
@@ -70,7 +72,6 @@ export class ConsultaNominaMensualPage implements OnInit {
     modal.onDidDismiss().then((dataReturned: OverlayEventDetail) => {
       if(dataReturned['data']!= undefined){
         this.fechaSelec = formatDate(dataReturned['data'], 'yyyy-MM', 'en-US')
-        console.log(this.fechaSelec + "AAAAAAAA")
       }
     });
     return await modal.present();

@@ -14,6 +14,7 @@ export class MovNominaMensualService {
 
     public url = environment.url
 
+    //Metodo para obtener la nomina mandando como parametros que empleado y en que fecha
     public obtenerNomina(id_empleado: number, fecha: string) {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Mov_NominaMensual?id_empleado=${id_empleado}&fecha=${fecha}`, {
@@ -34,7 +35,7 @@ export class MovNominaMensualService {
           }).catch(e => reject(e));;
         });
       }
-
+      //Metodo para capturar las entregas de un empleado en cierto mes
       public capturarMovimiento(capturaMovimientoMensual: CapturaMovimientoMensual) {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Mov_NominaMensual/`, {

@@ -24,11 +24,13 @@ export class CapturaMovimientosPage implements OnInit {
   public fechaSelec: string = ""
   public faltas: number = 0
   public cant_entregas: number = 0
+  //Formulario para validar que los campos esten completos y que cumplan los requisitos
   public formCaptura = new FormGroup({
     empleado: new FormControl('', Validators.compose([Validators.required])),
     cant_entregas: new FormControl('',Validators.compose([Validators.required, Validators.pattern("^[0-9]+")])),
     faltas: new FormControl('',Validators.compose([Validators.required, Validators.pattern("^[0-9]+")]))
   });
+  //Mensajes por si no cumplen bien el formulario
   validationMessages = {
     empleado: [
       { type: 'required', message: 'Seleccione un empleado' }
@@ -51,37 +53,29 @@ export class CapturaMovimientosPage implements OnInit {
    }
 
   ngOnInit() {
-    //this.arrayPuestos = [new Puesto(1,"Chofer",30,10), new Puesto(2,"Cargador",30,5), new Puesto(3,"Auxiliar",30,0)]
     
     this.fechaSelec = formatDate(new Date(), 'yyyy-MM', 'en-US')
-    console.log(this.fechaSelec)
+    //Obtenemos a los empleados para llenar el select, con ello llenaremos la informacion del puesto e id del empleado
     this.catalogoEmpleadosService.obtenerEmpleados().then((resp: any) =>{
       console.log(resp)
       this.arrayEmpleados = resp
     }).catch(e=>{
       console.log(e)
     })
-
-    this.catalogoPuestosService.obtenerPuestos().then((resp: any) =>{
-      console.log(resp)
-      this.arrayPuestos = resp
-      console.log(this.arrayPuestos)
-    }).catch(e=>{
-      console.log(e)
-    })
   }
 
   fechaSeleccionada($event: any){
+    //Cambio de fecha
     this.fechaSelec = $event.target.value
-    console.log(this.fechaSelec)
   }
 
   selectEmpleado($event: any){
-    console.log($event)
+    //Nuevo empleado seleccionado
     this.empleadoSeleccionado = $event.target.value
   }
 
   async abrirModal() {
+    //Componente que abre un calendario para seleccionar una fecha con formato de Mes y año.
     const modal = await this.modalController.create({
       component: FechacomponentComponent,
       cssClass: 'modal-fecha'
@@ -89,19 +83,19 @@ export class CapturaMovimientosPage implements OnInit {
     modal.onDidDismiss().then((dataReturned: OverlayEventDetail) => {
       if(dataReturned['data']!= undefined){
         this.fechaSelec = formatDate(dataReturned['data'], 'yyyy-MM', 'en-US')
-        console.log(this.fechaSelec + "AAAAAAAA")
       }
     });
     return await modal.present();
   }
 
   capturarMovimiento(){
-    console.log(this.fechaSelec)
+    //Creamos un objeto captura movimiento con la informacion necesaria para calcular la nomina
     let capturaMovimientoMensual = new CapturaMovimientoMensual()
     capturaMovimientoMensual.id_empleado = this.empleadoSeleccionado.id
     capturaMovimientoMensual.cant_entregas = this.cant_entregas
     capturaMovimientoMensual.faltas = this.faltas
     capturaMovimientoMensual.fecha = this.fechaSelec
+    //Llamamos al servicio donde mandaremos a capturar las entregas realizadas en el mes, nos devolvera true si se completó y false si no se capturó
     this.mov_NominaMensualService.capturarMovimiento(capturaMovimientoMensual).then((resp: any) =>{
       if(resp == true){
         this.messagingService.success("La información se ha capturado correctamente")

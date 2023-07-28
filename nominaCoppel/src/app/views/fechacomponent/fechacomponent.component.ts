@@ -14,6 +14,7 @@ export class FechacomponentComponent  implements OnInit {
   nuevaFecha($event: any){
     this.fecha = $event.target.value
     console.log(this.fecha)
+    //Cerramos el componente devolviendo la fecha seleccionada
     this.modalController.dismiss(this.fecha)
   }
 

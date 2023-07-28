@@ -16,6 +16,7 @@ export class CapturaEmpleadosPage implements OnInit {
   public arrayPuestos: Puesto[] = [];
   public fechaNacimiento: string = ""
   public puestoSeleccionado: Puesto = new Puesto()
+  //Formulario para validar que los campos esten completos y que cumplan los requisitos
   public formCaptura = new FormGroup({
     apellido_pat: new FormControl('', Validators.compose([Validators.required])),
     apellido_mat: new FormControl('', Validators.compose([Validators.required])),
@@ -24,6 +25,7 @@ export class CapturaEmpleadosPage implements OnInit {
     domicilio: new FormControl('',Validators.compose([Validators.required])),
     puesto: new FormControl('', Validators.compose([Validators.required])),
   });
+  //Mensajes por si no cumplen bien el formulario
   validationMessages = {
     apellido_pat: [
       { type: 'required', message: 'Ingrese el nombre' }
@@ -50,7 +52,7 @@ export class CapturaEmpleadosPage implements OnInit {
   
 
   ngOnInit() {
-    console.log(this.fechaNacimiento)
+    //Obtenemos los puestos para llenar el select
     this.catalogoPuestosService.obtenerPuestos().then((resp: any) =>{
       console.log(resp)
       this.arrayPuestos = resp
@@ -71,6 +73,7 @@ export class CapturaEmpleadosPage implements OnInit {
   }
 
   capturarEmpleado(){
+    //Comprobamos que la fecha no este vacia
     if (this.fechaNacimiento != ""){
       let empleado = new Empleado()
       empleado.apellido_pat = this.formCaptura.value.apellido_pat!
@@ -81,6 +84,7 @@ export class CapturaEmpleadosPage implements OnInit {
       empleado.id_puesto = this.puestoSeleccionado.id
       empleado.fecha_nac = this.fechaNacimiento
       console.log(empleado)
+      //Llamamos al servicio para hacer una peticion a la API para guardar el empleado, si devuelve true se guardo, de lo contrario no se completo el proceso
       this.catalogoEmpleadosService.capturarEmpleado(empleado).then((resp: any) =>{
         if(resp == true){
           this.messagingService.success("El empleado se ha capturado correctamente")
@@ -92,6 +96,8 @@ export class CapturaEmpleadosPage implements OnInit {
         this.messagingService.error("Error al capturar al empleado")
       })
       
+    }else{
+      this.messagingService.success("No se ha seleccionado una fecha de nacimiento valida")
     }
 
   }

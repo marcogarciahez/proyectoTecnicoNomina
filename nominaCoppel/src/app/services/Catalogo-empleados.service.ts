@@ -11,6 +11,7 @@ export class CatalogoEmpleadosService {
 
     public url = environment.url
 
+    //Solicita un empleado, se pasa el id del empleado a buscar
     public obtenerEmpleadoId(id: number) {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Empleado?id=${id}`, {
@@ -31,6 +32,7 @@ export class CatalogoEmpleadosService {
         });
       }
 
+      //Solicita la lista de los empleados que trabajan
       public obtenerEmpleados() {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Empleado/`, {
@@ -51,6 +53,7 @@ export class CatalogoEmpleadosService {
         });
       }
 
+      //Manda a capturar empleado, Metodo POST que incluye un objeto tipo Empleado en su body
       public capturarEmpleado(empleado: Empleado) {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Empleado/`, {
