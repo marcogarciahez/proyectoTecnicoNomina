@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Empleado } from '../models/Empleado';
 import { Puesto } from '../models/Puesto';
 import { CapturaMovimientoMensual } from '../models/CapturaMovimientoMensualModel';
+import { Mov_NominaMensual } from '../models/Mov_NominaMensualModel';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +23,8 @@ export class MovNominaMensualService {
             }
           }).then(response => {
             if (response.status === 200) {
-              response.json().then((data: Puesto[]) => {
+                console.log(response)
+              response.json().then((data: Mov_NominaMensual) => {
     
                 resolve(data);
               });

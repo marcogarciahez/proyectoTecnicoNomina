@@ -51,6 +51,24 @@ export class CatalogoEmpleadosService {
         });
       }
 
+      public capturarEmpleado(empleado: Empleado) {
+        return new Promise((resolve, reject) => {
+          fetch(this.url + `Empleado/`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(empleado)
+          }).then(response => {
+            if (response.status === 200) {
+              resolve(true);
+            } else {
+              reject('No se pudo guardar el empleado');
+            }
+          }).catch(e => reject(e));;
+        });
+      }
+
       /*public obtenerEmpleadosFiltro(nombre: string) {
         return new Promise((resolve, reject) => {
           fetch(this.url + `Empleado?nombre=${nombre}`, {

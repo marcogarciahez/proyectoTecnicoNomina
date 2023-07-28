@@ -9,4 +9,7 @@ export class Empleado {
     nombre_puesto?: string;
     fecha_nac?:string;
      
+    constructor(){
+
+    }
   }

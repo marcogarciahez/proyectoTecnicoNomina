@@ -4,19 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FechacomponentModule } from '../fechacomponent/fechacomponent.module';
-import { CapturaEmpleadosPageRoutingModule } from './captura-empleados-routing.module';
+import { ConsultaNominaMensualPageRoutingModule } from './consulta-nomina-mensual-routing.module';
 
-import { CapturaEmpleadosPage } from './captura-empleados.page';
+import { ConsultaNominaMensualPage } from './consulta-nomina-mensual.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    FechacomponentModule,
     ReactiveFormsModule,
+    FechacomponentModule,
     IonicModule,
-    CapturaEmpleadosPageRoutingModule
+    ConsultaNominaMensualPageRoutingModule
   ],
-  declarations: [CapturaEmpleadosPage]
+  declarations: [ConsultaNominaMensualPage]
 })
-export class CapturaEmpleadosPageModule {}
+export class ConsultaNominaMensualPageModule {}

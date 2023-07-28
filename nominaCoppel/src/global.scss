@@ -32,3 +32,12 @@ coppel-amarillo{
 coppel-azul{
     color: #0864af;
 }
+
+.modal-fecha {
+    --backdrop-opacity: 0.8 !important;
+    --width: 18% !important;
+    --height: 32%;
+    .modal-wrapper {
+      position: absolute;
+    }
+  }

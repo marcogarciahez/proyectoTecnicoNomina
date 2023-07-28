@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'captura-movimientos',
     loadChildren: () => import('./views/captura-movimientos/captura-movimientos.module').then(m => m.CapturaMovimientosPageModule)
+  },
+  {
+    path: 'consulta-nomina-mensual',
+    loadChildren: () => import('./views/consulta-nomina-mensual/consulta-nomina-mensual.module').then( m => m.ConsultaNominaMensualPageModule)
   }
 ];
 

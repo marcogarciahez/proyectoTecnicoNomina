@@ -1,7 +1,7 @@
 export class CapturaMovimientoMensual {
     id_empleado?: number;
     fecha?:string;
-    cant_movimientos?: number;
+    cant_entregas?: number;
     faltas?: number;
 
   }
