@@ -10,6 +10,5 @@ export class Empleado {
     fecha_nac?:string;
      
     constructor(){
-
     }
   }

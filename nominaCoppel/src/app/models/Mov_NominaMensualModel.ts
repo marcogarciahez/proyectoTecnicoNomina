@@ -13,4 +13,7 @@ export class Mov_NominaMensual {
     saldo_vales?: number;
     sueldo_neto?:number;
      
+    constructor(){
+    }
+    
   }

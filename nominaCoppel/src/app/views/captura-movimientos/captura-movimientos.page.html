@@ -16,6 +16,19 @@
           </ion-select>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size="10" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.empleado">
+              <div *ngIf="formCaptura.get('empleado').hasError(validation.type) &&
+          (formCaptura.get('empleado').dirty ||
+          formCaptura.get('empleado').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
       <ion-row class="centrar ion-justify-content-start alturaRow" style="margin-top: 40px;">
         <ion-col size="3" offset="1">
           <ion-icon class="texto" name="person"></ion-icon> <ion-label class="texto"> Número de empleado:</ion-label>
@@ -43,13 +56,37 @@
       <ion-row class="centrar ion-justify-content-start alturaRow">
         <ion-col size="3" offset="1" class="linea">
           <ion-item>
-            <ion-input class="texto" type="number" min="0" formControlName="cant_movimientos" [(ngModel)]="cant_entregas"></ion-input>
+            <ion-input class="texto" type="number" min="0" formControlName="cant_entregas" [(ngModel)]="cant_entregas"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="3" offset="4" class="linea">
           <ion-item>
             <ion-input class="texto" type="number" min="0" formControlName="faltas" [(ngModel)]="faltas"></ion-input>
           </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.cant_entregas">
+              <div *ngIf="formCaptura.get('cant_entregas').hasError(validation.type) &&
+          (formCaptura.get('cant_entregas').dirty ||
+          formCaptura.get('cant_entregas').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="3" offset="4">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.faltas">
+              <div *ngIf="formCaptura.get('faltas').hasError(validation.type) &&
+          (formCaptura.get('faltas').dirty ||
+          formCaptura.get('faltas').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row class="centrar ion-justify-content-start alturaRow" style="margin-top: 20px;">

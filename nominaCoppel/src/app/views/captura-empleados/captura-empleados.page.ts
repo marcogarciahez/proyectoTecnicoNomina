@@ -4,6 +4,7 @@ import { Empleado } from 'src/app/models/Empleado';
 import { CatalogoEmpleadosService } from 'src/app/services/Catalogo-empleados.service';
 import { CatalogoPuestosService } from 'src/app/services/Catalogo-puestos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessagingService } from 'src/app/services/MessagingService';
 
 @Component({
   selector: 'app-captura-empleados',
@@ -19,12 +20,32 @@ export class CapturaEmpleadosPage implements OnInit {
     apellido_pat: new FormControl('', Validators.compose([Validators.required])),
     apellido_mat: new FormControl('', Validators.compose([Validators.required])),
     nombre: new FormControl('', Validators.compose([Validators.required])),
-    telefono: new FormControl('',Validators.compose([Validators.required])),
+    telefono: new FormControl('',Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern("[0-9]{10}") ])),
     domicilio: new FormControl('',Validators.compose([Validators.required])),
     puesto: new FormControl('', Validators.compose([Validators.required])),
   });
+  validationMessages = {
+    apellido_pat: [
+      { type: 'required', message: 'Ingrese el nombre' }
+    ],
+    apellido_mat: [
+      { type: 'required', message: 'Ingrese el nombre' }
+    ],
+    nombre: [
+      { type: 'required', message: 'Ingrese el nombre' }
+    ],
+    telefono: [
+      { type: 'required', message: 'Ingrese el telefono' },
+      { type: 'pattern', message: 'Caracteres no validos para este campo o excedio el limite de caracteres.' },
+      { type: 'minlength', message: 'Numero de 10 caracteres.'}
+    ],
+    domicilio: [
+      { type: 'required', message: 'Ingrese el domicilio' }
+    ]
+  };
   constructor(private catalogoEmpleadosService: CatalogoEmpleadosService,
-    private catalogoPuestosService: CatalogoPuestosService) { }
+    private catalogoPuestosService: CatalogoPuestosService,
+    private messagingService: MessagingService) { }
 
   
 
@@ -61,9 +82,14 @@ export class CapturaEmpleadosPage implements OnInit {
       empleado.fecha_nac = this.fechaNacimiento
       console.log(empleado)
       this.catalogoEmpleadosService.capturarEmpleado(empleado).then((resp: any) =>{
-        console.log("Empleado capturado correctamente")
+        if(resp == true){
+          this.messagingService.success("El empleado se ha capturado correctamente")
+        }else{
+          this.messagingService.error("Error al capturar al empleado")
+        }
       }).catch(e =>{
         console.log(e)
+        this.messagingService.error("Error al capturar al empleado")
       })
       
     }

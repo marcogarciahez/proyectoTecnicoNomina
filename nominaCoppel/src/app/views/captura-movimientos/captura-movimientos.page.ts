@@ -10,6 +10,7 @@ import { formatDate } from '@angular/common';
 import { FechacomponentComponent } from '../fechacomponent/fechacomponent.component';
 import {OverlayEventDetail} from '@ionic/core'; 
 import { ModalController } from '@ionic/angular';
+import { MessagingService } from 'src/app/services/MessagingService';
 @Component({
   selector: 'app-captura-movimientos',
   templateUrl: './captura-movimientos.page.html',
@@ -25,14 +26,27 @@ export class CapturaMovimientosPage implements OnInit {
   public cant_entregas: number = 0
   public formCaptura = new FormGroup({
     empleado: new FormControl('', Validators.compose([Validators.required])),
-    cant_movimientos: new FormControl('',Validators.compose([Validators.required])),
-    faltas: new FormControl('',Validators.compose([Validators.required]))
+    cant_entregas: new FormControl('',Validators.compose([Validators.required, Validators.pattern("^[0-9]+")])),
+    faltas: new FormControl('',Validators.compose([Validators.required, Validators.pattern("^[0-9]+")]))
   });
-  
+  validationMessages = {
+    empleado: [
+      { type: 'required', message: 'Seleccione un empleado' }
+    ],
+    cant_entregas: [
+      { type: 'required', message: 'Ingrese la cantidad de entregas' },
+      { type: 'pattern', message: 'Caracteres no validos para este campo.' },
+    ],
+    faltas: [
+      { type: 'required', message: 'Ingrese las faltas' },
+      { type: 'pattern', message: 'Caracteres no validos para este campo.' },
+    ]
+  };
   constructor(private catalogoEmpleadosService: CatalogoEmpleadosService,
     private catalogoPuestosService: CatalogoPuestosService,
     private mov_NominaMensualService: MovNominaMensualService,
-    private modalController: ModalController) {
+    private modalController: ModalController,
+    private messagingService: MessagingService) {
     
    }
 
@@ -89,9 +103,14 @@ export class CapturaMovimientosPage implements OnInit {
     capturaMovimientoMensual.faltas = this.faltas
     capturaMovimientoMensual.fecha = this.fechaSelec
     this.mov_NominaMensualService.capturarMovimiento(capturaMovimientoMensual).then((resp: any) =>{
-      console.log("Triunfamos")
+      if(resp == true){
+        this.messagingService.success("La información se ha capturado correctamente")
+      }else{
+        this.messagingService.error("Error al capturar la información")
+      }
     }).catch(e=>{
       console.log(e)
+      this.messagingService.error("Error al capturar la información")
     })
   }
 

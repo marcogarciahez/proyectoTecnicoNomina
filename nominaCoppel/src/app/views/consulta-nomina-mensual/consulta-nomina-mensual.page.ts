@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FechacomponentComponent } from '../fechacomponent/fechacomponent.component';
 import {OverlayEventDetail} from '@ionic/core'; 
+import { MessagingService } from 'src/app/services/MessagingService';
 
 @Component({
   selector: 'app-consulta-nomina-mensual',
@@ -25,7 +26,7 @@ export class ConsultaNominaMensualPage implements OnInit {
   });
   constructor(private catalogoEmpleadosService: CatalogoEmpleadosService,
     private mov_NominaMensualService: MovNominaMensualService, 
-    private modalController: ModalController) { }
+    private modalController: ModalController, private messagingService: MessagingService) { }
 
   ngOnInit() {
     this.fechaSelec = formatDate(new Date(), 'yyyy-MM', 'en-US')
@@ -53,8 +54,10 @@ export class ConsultaNominaMensualPage implements OnInit {
     this.mov_NominaMensualService.obtenerNomina(this.empleadoSeleccionado.id!, this.fechaSelec).then((resp: any) =>{
       console.log(resp)
       this.nomina = resp
+      this.messagingService.success("Nomina consultada")
     }).catch(e =>{
       console.log(e)
+      this.messagingService.error("Error al consultar nomina")
     });
     console.log("Hola")
   }

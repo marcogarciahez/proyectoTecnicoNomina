@@ -23,6 +23,30 @@
           <ion-input formControlName="apellido_pat"></ion-input>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size="4.5" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.nombre">
+              <div *ngIf="formCaptura.get('nombre').hasError(validation.type) &&
+          (formCaptura.get('nombre').dirty ||
+          formCaptura.get('nombre').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="4.5" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.apellido_pat">
+              <div *ngIf="formCaptura.get('apellido_pat').hasError(validation.type) &&
+          (formCaptura.get('apellido_pat').dirty ||
+          formCaptura.get('apellido_pat').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
       <ion-row class="mt">
         <ion-col size="4.5" offset="1">
           <ion-label>Apellido materno:</ion-label>
@@ -39,6 +63,30 @@
           <ion-input formControlName="telefono"></ion-input>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size="4.5" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.apellido_mat">
+              <div *ngIf="formCaptura.get('apellido_mat').hasError(validation.type) &&
+          (formCaptura.get('apellido_mat').dirty ||
+          formCaptura.get('apellido_mat').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="4.5" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.telefono">
+              <div *ngIf="formCaptura.get('telefono').hasError(validation.type) &&
+          (formCaptura.get('telefono').dirty ||
+          formCaptura.get('telefono').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
       <ion-row class="mt">
         <ion-col size="6" offset="1">
           <ion-label>Domicilio:</ion-label>
@@ -47,6 +95,19 @@
       <ion-row>
         <ion-col class="linea" size="8" offset="1">
           <ion-input formControlName="domicilio"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="8" offset="1">
+          <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.domicilio">
+              <div *ngIf="formCaptura.get('domicilio').hasError(validation.type) &&
+          (formCaptura.get('domicilio').dirty ||
+          formCaptura.get('domicilio').touched)">
+                {{validation.message }}
+              </div>
+            </ng-container>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row class="mt centrar">

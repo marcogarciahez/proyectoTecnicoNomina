@@ -4,4 +4,6 @@ export class CapturaMovimientoMensual {
     cant_entregas?: number;
     faltas?: number;
 
+    constructor(){
+    }
   }

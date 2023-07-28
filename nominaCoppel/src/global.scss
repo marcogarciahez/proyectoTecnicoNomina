@@ -40,4 +40,12 @@ coppel-azul{
     .modal-wrapper {
       position: absolute;
     }
-  }
+}
+
+.validation-error {
+  padding-top: 2px;
+  font-size: 14px;
+  color: red;
+  float: left;
+  margin-left: 5%;
+}
