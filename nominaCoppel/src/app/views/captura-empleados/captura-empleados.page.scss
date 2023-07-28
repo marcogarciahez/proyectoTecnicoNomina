@@ -1,24 +1,57 @@
-ion-header, ion-content {
-  //  --background: white;
+ion-card{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 80% !important;
+  top: 10%;
+  height: 80%;
+  left: 10%;
+  right: 10%;
+  bottom: auto;
+  margin-top: 40px !important;
+  margin: auto !important;
+  justify-content: center;
+  border: solid 1px #ebebf2;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-size: 16px;
 }
 
-ion-card{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 80% !important;
-    top: 10%;
-    left: 10%;
-    right: 10%;
-    bottom: auto;
-    margin-top: 40px !important;
-    margin: auto !important;
-    justify-content: center;
-    border: solid 1px #ebebf2;
-  }
+.texto{
+font-size: 18px;
+color: white;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-weight: bold;
+}
 
-  .centrar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.selector{
+color: white;
+background-color: gray;
+}
+
+.centrar{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.alturaRow{
+height: 70px;
+//margin-top: 5px;
+}
+
+.boton{
+height: 40px;
+width: fit-content;
+}
+
+.linea{
+border-bottom: 1px solid white;
+}
+ion-label{
+font-weight: bold;
+}
+
+.mt{
+  margin-top: 30px;
+}

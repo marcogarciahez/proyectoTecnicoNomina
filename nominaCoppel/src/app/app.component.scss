@@ -1,5 +1,6 @@
 ion-menu ion-content {
   //--background: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 /*ion-item{
   --background: white;
@@ -43,6 +44,7 @@ ion-menu.md ion-list#labels-list ion-list-header {
   color: #757575;
 
   min-height: 26px;
+  
 }
 
 ion-menu.md ion-item {
@@ -65,6 +67,7 @@ ion-menu.md ion-item ion-icon {
 
 ion-menu.md ion-item ion-label {
   font-weight: 500;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 ion-menu.ios ion-content {

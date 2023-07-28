@@ -3,6 +3,7 @@
 }
 .card{
     border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .cabecera{
     //background-color: #E84F17;
@@ -21,40 +22,7 @@
     padding-right: 10px;
     color: #000000;
 }
-.cuerpo ion-col{
-    border-bottom: 1px solid black;
-    padding-left: 15px;
-}
-.acciones{
-    font-size: 22px;
-    text-align: center;
-}
-.acciones ion-col{
-    border: none !important;
-    vertical-align: middle;
-    padding: 0px !important;
-}
 
-.acciones ion-col:hover{
-    background: #E4E1E1;
-}
-.acciones ion-icon{
-    cursor: pointer;
-    vertical-align: middle;
-}
-.cont-boton{
-  margin-left: 1%;
-}
-.buscador{
-    border: 2px solid black;
-    border-radius: 8px;
-}
-.item-has-focus ion-icon{
-    color: #ba4e32;
-}
-.buscador ion-input{
-    margin-left: 10px;
-}
 .roundedInput{
     z-index: 1;
     color: #070606;
@@ -73,49 +41,17 @@
    -moz-box-shadow: 17px 11px 34px -10px rgba(0,0,0,0.7);
    box-shadow: 16px 8px 20px -20px rgba(0, 0, 0, 0.7);
 }
-*:focus {
-    outline: none;
-}
-input{
-    width: 100%;
-    border: none;
-  }
-.paginador{
-    float: right;
-    margin-top: 10px;
-}
-.paginador div{
-    // border: 1px solid black;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0px 10px;
-}
-.paginadorLblInfo{
-    margin: 0px !important;
-    margin-right: -10px;
-}
-.limitador ion-select{
-    --width: 100% !important;
-    border: 1px solid black;
-}
-.limitador ion-select:hover{
-    background-color: red;
-}
-.paginador ion-icon{
-    font-size: 25px;
-    padding: 1px 5px;
-    vertical-align: bottom;
-    width: 30px;
-}
-.paginador ion-icon:hover{
-    cursor: pointer;
-    color: #D56E53;
-}
+
 .limitador{
     min-width: 200px !important;
     width: 300px !important;
 }
-.siEnrroll
-{
-  fill:green
-}
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ion-content{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }

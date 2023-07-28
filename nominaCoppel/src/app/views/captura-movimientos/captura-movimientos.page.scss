@@ -4,6 +4,7 @@ ion-card{
     position: absolute;
     width: 80% !important;
     top: 10%;
+    height: 80%;
     left: 10%;
     right: 10%;
     bottom: auto;
@@ -11,4 +12,58 @@ ion-card{
     margin: auto !important;
     justify-content: center;
     border: solid 1px #ebebf2;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
+
+.roundedInput{
+    z-index: 1;
+    color: white;
+    height:80%;
+   -webkit-border-radius: 10px;
+    -moz-border-radius: 5px;
+    border-radius: 12px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(225,225,225);
+    margin-left: 5%;
+    background-color: transparent;
+    margin-right: 5%;
+    margin-top: 10px;
+   -webkit-box-shadow: 17px 11px 34px -10px rgba(9, 49, 49, 0.041);
+   -moz-box-shadow: 17px 11px 34px -10px rgba(9, 49, 49, 0.041);
+   box-shadow: 16px 8px 20px -20px rgba(49, 49, 49, 0.041);
+}
+
+.texto{
+  font-size: 18px;
+  color: white;
+}
+
+.selector{
+  color: white;
+  background-color: gray;
+}
+
+.centrar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alturaRow{
+ height: 70px;
+ //margin-top: 5px;
+}
+
+.boton{
+  height: 40px;
+  width: fit-content;
+}
+
+.linea{
+  border-bottom: 1px solid white;
+}
+ion-label{
+  font-weight: bold;
+}
+

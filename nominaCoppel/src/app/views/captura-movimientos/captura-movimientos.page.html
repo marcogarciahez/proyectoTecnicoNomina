@@ -9,63 +9,60 @@
     <ion-card>
       <ion-row>
         <ion-col size="10" offset="1">
-          <ion-select label="Empleado:" placeholder="Seleccione un empleado" interface="popover" (ionChange)="selectEmpleado($event)" justify="start" formControlName="empleado">
+          <ion-select class="texto linea" style="font-weight: bold;" label="Empleado:" placeholder="Seleccione un empleado" interface="popover" (ionChange)="selectEmpleado($event)" justify="start" formControlName="empleado">
             <div>
-              <ion-select-option *ngFor="let emp of arrayEmpleados" [value]=emp>{{emp.nombre + ' ' + emp.apellido_pat + ' ' + emp.apellido_mat}}</ion-select-option>
+              <ion-select-option class="texto" *ngFor="let emp of arrayEmpleados" [value]=emp>{{emp.nombre + ' ' + emp.apellido_pat + ' ' + emp.apellido_mat}}</ion-select-option>
             </div>
           </ion-select>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="centrar ion-justify-content-start alturaRow" style="margin-top: 40px;">
         <ion-col size="3" offset="1">
-          <ion-label>Número de empleado:</ion-label>
+          <ion-icon class="texto" name="person"></ion-icon> <ion-label class="texto"> Número de empleado:</ion-label>
         </ion-col>
-        <ion-col size="8">
-          <ion-label>{{empleadoSeleccionado.id}}</ion-label>
+        <ion-col size="3" offset="4">
+          <ion-icon class="texto" name="create"></ion-icon><ion-label class="texto"> Rol:</ion-label>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="3" offset="1">
-          <ion-label>Rol:</ion-label>
+      <ion-row class="centrar ion-justify-content-start alturaRow">
+        <ion-col size="3" offset="1" class="linea">
+          <ion-label class="texto">{{empleadoSeleccionado.id}}</ion-label>
         </ion-col>
-        <ion-col size="8">
-          <ion-label>{{empleadoSeleccionado.nombre_puesto}}</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" offset="1">
-          <ion-label>Mes: {{fechaSelec}}</ion-label>
-        </ion-col>
-        <ion-col size="3">
-          <ion-button (click)="abrirModal()">Seleccionar fecha</ion-button>
+        <ion-col size="3" offset="4" class="linea">
+          <ion-label class="texto">{{empleadoSeleccionado.nombre_puesto}}</ion-label>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="centrar ion-justify-content-start alturaRow">
         <ion-col size="3" offset="1">
-          <ion-label>Movimientos realizados:</ion-label>
+          <ion-icon class="texto" name="clipboard"></ion-icon><ion-label class="texto" class="texto"> Movimientos realizados:</ion-label>
         </ion-col>
-        <ion-col size="3">
+        <ion-col size="3" offset="4">
+          <ion-icon class="texto" name="close-circle"></ion-icon><ion-label class="texto"> Faltas:</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="centrar ion-justify-content-start alturaRow">
+        <ion-col size="3" offset="1" class="linea">
           <ion-item>
-            <ion-input type="number" min="0" formControlName="cant_movimientos" [(ngModel)]="cant_entregas"></ion-input>
+            <ion-input class="texto" type="number" min="0" formControlName="cant_movimientos" [(ngModel)]="cant_entregas"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3" offset="4" class="linea">
+          <ion-item>
+            <ion-input class="texto" type="number" min="0" formControlName="faltas" [(ngModel)]="faltas"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="3" offset="1">
-          <ion-label>Faltas:</ion-label>
+      <ion-row class="centrar ion-justify-content-start alturaRow" style="margin-top: 20px;">
+        <ion-col size="3" offset="3">
+          <ion-label class="texto">Mes a capturar: {{fechaSelec}}</ion-label>
         </ion-col>
         <ion-col size="3">
-          <ion-item>
-            <ion-input type="number" min="0" formControlName="faltas" [(ngModel)]="faltas"></ion-input>
-          </ion-item>
+          <ion-button class="boton" (click)="abrirModal()">Seleccionar fecha</ion-button>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="4" offset="2" style="display: flex; justify-content: center;">
-          <ion-button [disabled]="!formCaptura.valid" (click)="capturarMovimiento()">Guardar</ion-button>
-        </ion-col>
-        <ion-col size="4" style="display: flex; justify-content: center;">
-          <ion-button>Cancelar</ion-button>
+      <ion-row class="centrar ion-justify-content-start alturaRow">
+        <ion-col size="3" offset="4" class="centrar">
+          <ion-button class="boton" [disabled]="!formCaptura.valid" (click)="capturarMovimiento()">Guardar</ion-button>
         </ion-col>
       </ion-row>
     </ion-card>
